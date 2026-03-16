@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Explore India</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar glass">
+        <div class="container nav-content">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <i data-lucide="compass"></i>
+                <span>Wanderlust</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="nav-links">
+                <a href="#destinations">Destinations</a>
+                <a href="#experiences">Experiences</a>
+                <a href="#stats">Impact</a>
+                <button onclick="openBooking()" class="btn-book">
+                    Book Now
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="mobile-menu-btn">
+                <i data-lucide="menu" style="width: 2rem; height: 2rem;"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="mobile-menu glass-dark">
+            <a href="#destinations">Destinations</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#stats">Impact</a>
+            <button onclick="openBooking()" class="btn-brand-full">Book Your Trip</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-wrapper">
+            <div class="hero-bg"></div>
+        </div>
+
+
+
+        <div class="container">
+            <span class="hero-badge glass">
+                ✨ Discover the Undiscovered
+            </span>
+            <h1 class="hero-title reveal active">
+                Where Ancient Mysteries <br> Meet Modern Adventures
+            </h1>
+            <p class="hero-subtitle reveal active">
+                Journey beyond the ordinary. From hidden Himalayan temples to secret coastal paradises, 
+                uncover India's best-kept secrets with exclusive insider access.
+            </p>
+            
+            <!-- Search Widget -->
+            <div class="search-widget glass reveal active">
+                <div class="search-input-group">
+                    <i data-lucide="map-pin"></i>
+                    <input type="text" placeholder="Where in India?">
+                </div>
+                <div class="search-input-group">
+                    <i data-lucide="calendar"></i>
+                    <input type="date">
+                </div>
+                <div class="search-input-group">
+                    <i data-lucide="users"></i>
+                    <select>
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3+ Guests</option>
+                    </select>
+                </div>
+                <button onclick="showToast('Searching for best trains & flights...')" class="btn-search">
+                    <i data-lucide="search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <a href="#destinations" class="scroll-indicator glass">
+            <i data-lucide="chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destinations" class="destinations-section">
+        <!-- Animated Background Blobs -->
+        <div class="blob-container">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-title">Hidden Treasures Await</span>
+                <h2 class="section-heading">Unlock Secret Destinations</h2>
+                <p style="max-width: 42rem; margin: 0 auto 3rem; color: #94a3b8; font-size: 1.125rem;">Curated experiences for the curious traveler. Each journey tells a story untold.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters reveal">
+                <button onclick="filterDestinations('all')" class="filter-btn active">All</button>
+                <button onclick="filterDestinations('beach')" class="filter-btn">Beaches</button>
+                <button onclick="filterDestinations('mountain')" class="filter-btn">Mountains</button>
+                <button onclick="filterDestinations('city')" class="filter-btn">Cities</button>
+            </div>
+
+            <!-- Destination Grid -->
+            <div class="destinations-grid" id="destination-grid">
+                <!-- Card 1: Goa -->
+                <div class="destination-card glass reveal" data-category="beach">
+                    <div class="card-image-wrapper">
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Goa">
+                        <div class="price-tag glass">₹15,000</div>
+                        <div class="card-location">
+                            <div class="location-meta">
+                                <i data-lucide="map-pin" style="width: 1rem;"></i>
+                                <span>Goa</span>
+                            </div>
+                            <h3>Goa Beach Vibes</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">Secret beaches, midnight markets, and ancient Portuguese mysteries. Experience Goa beyond the tourist trail.</p>
+                        <div class="card-footer">
+                            <div class="rating">
+                                <i data-lucide="star" fill="#fbbf24" style="width: 1rem;"></i>
+                                <span>4.8</span>
+                                <small>(320 reviews)</small>
+                            </div>
+                            <button onclick="showToast('Added Goa to itinerary')" class="btn-add">
+                                <i data-lucide="plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Ladakh -->
+                <div class="destination-card glass reveal" data-category="mountain">
+                    <div class="card-image-wrapper">
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ladakh">
+                        <div class="price-tag glass">₹35,000</div>
+                        <div class="card-location">
+                            <div class="location-meta">
+                                <i data-lucide="map-pin" style="width: 1rem;"></i>
+                                <span>Ladakh</span>
+                            </div>
+                            <h3>Pangong Lake Trek</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">Journey to where the earth touches the sky. Ancient monasteries, turquoise lakes, and roads less traveled await.</p>
+                        <div class="card-footer">
+                            <div class="rating">
+                                <i data-lucide="star" fill="#fbbf24" style="width: 1rem;"></i>
+                                <span>5.0</span>
+                                <small>(150 reviews)</small>
+                            </div>
+                            <button onclick="showToast('Added Ladakh to itinerary')" class="btn-add">
+                                <i data-lucide="plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Jaipur -->
+                <div class="destination-card glass reveal" data-category="city">
+                    <div class="card-image-wrapper">
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jaipur">
+                        <div class="price-tag glass">₹12,000</div>
+                        <div class="card-location">
+                            <div class="location-meta">
+                                <i data-lucide="map-pin" style="width: 1rem;"></i>
+                                <span>Rajasthan</span>
+                            </div>
+                            <h3>Jaipur Royal City</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">Walk through living history. Discover hidden palace chambers and centuries-old secrets of the royal Pink City.</p>
+                        <div class="card-footer">
+                            <div class="rating">
+                                <i data-lucide="star" fill="#fbbf24" style="width: 1rem;"></i>
+                                <span>4.8</span>
+                                <small>(210 reviews)</small>
+                            </div>
+                            <button onclick="showToast('Added Jaipur to itinerary')" class="btn-add">
+                                <i data-lucide="plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Kerala -->
+                <div class="destination-card glass reveal" data-category="beach">
+                    <div class="card-image-wrapper">
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kerala">
+                        <div class="price-tag glass">₹18,000</div>
+                        <div class="card-location">
+                            <div class="location-meta">
+                                <i data-lucide="map-pin" style="width: 1rem;"></i>
+                                <span>Kerala</span>
+                            </div>
+                            <h3>Alleppey Houseboat</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">Float through mystical backwaters at sunrise. Where time slows down and nature whispers ancient tales.</p>
+                        <div class="card-footer">
+                            <div class="rating">
+                                <i data-lucide="star" fill="#fbbf24" style="width: 1rem;"></i>
+                                <span>4.9</span>
+                                <small>(192 reviews)</small>
+                            </div>
+                            <button onclick="showToast('Added Kerala to itinerary')" class="btn-add">
+                                <i data-lucide="plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Mumbai -->
+                <div class="destination-card glass reveal" data-category="city">
+                    <div class="card-image-wrapper">
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1566552881560-0be862a7c445?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mumbai">
+                        <div class="price-tag glass">₹8,000</div>
+                        <div class="card-location">
+                            <div class="location-meta">
+                                <i data-lucide="map-pin" style="width: 1rem;"></i>
+                                <span>Maharashtra</span>
+                            </div>
+                            <h3>Mumbai City Life</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">The city that never sleeps. From Bollywood studios to midnight street food—experience the pulse of India.</p>
+                        <div class="card-footer">
+                            <div class="rating">
+                                <i data-lucide="star" fill="#fbbf24" style="width: 1rem;"></i>
+                                <span>4.6</span>
+                                <small>(540 reviews)</small>
+                            </div>
+                            <button onclick="showToast('Added Mumbai to itinerary')" class="btn-add">
+                                <i data-lucide="plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Manali -->
+                <div class="destination-card glass reveal" data-category="mountain">
+                    <div class="card-image-wrapper">
+                        <div class="card-overlay"></div>
+                        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Manali">
+                        <div class="price-tag glass">₹22,000</div>
+                        <div class="card-location">
+                            <div class="location-meta">
+                                <i data-lucide="map-pin" style="width: 1rem;"></i>
+                                <span>Himachal</span>
+                            </div>
+                            <h3>Manali Snow Peaks</h3>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">Adventure calls from snow-clad peaks. Ski untouched slopes, explore hidden valleys, live the mountain dream.</p>
+                        <div class="card-footer">
+                            <div class="rating">
+                                <i data-lucide="star" fill="#fbbf24" style="width: 1rem;"></i>
+                                <span>4.9</span>
+                                <small>(250 reviews)</small>
+                            </div>
+                            <button onclick="showToast('Added Manali to itinerary')" class="btn-add">
+                                <i data-lucide="plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats-section">
+        <!-- Background Animation -->
+        <div class="blob-container">
+            <div class="blob" style="top: 20%; left: 20%; width: 20rem; height: 20rem; background: rgba(249, 115, 22, 0.1);"></div>
+            <div class="blob" style="bottom: 20%; right: 20%; width: 20rem; height: 20rem; background: rgba(168, 85, 247, 0.1); animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3 class="stat-number counter" data-target="15000">0</h3>
+                    <p class="stat-label">Happy Travelers</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 class="stat-number counter" data-target="850">0</h3>
+                    <p class="stat-label">Tours Completed</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 class="stat-number counter" data-target="120">0</h3>
+                    <p class="stat-label">Destinations</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 class="stat-number counter" data-target="4.9">0</h3>
+                    <p class="stat-label">Average Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="experiences" class="destinations-section">
+        <div class="container features-container">
+            <div class="features-text reveal">
+                <h2 class="section-heading">Why Choose The Path Less Traveled?</h2>
+                <p style="margin-bottom: 2rem; color: #94a3b8;">We don't just plan trips—we craft legendary experiences. Our local insiders unlock doors that remain closed to ordinary tourists.</p>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Your Safety, Our Priority</h4>
+                        <p>Expert guides who know every path, plus 24/7 guardian angel support wherever your adventure takes you.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i data-lucide="wallet"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Unbeatable Value Promise</h4>
+                        <p>Premium experiences at honest prices. We'll match any competitor or give you something even better.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i data-lucide="leaf"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Travel with Purpose</h4>
+                        <p>Every journey plants trees and supports local communities. Leave footprints, not scars.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-images reveal">
+                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Traveler">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Landscape">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="testimonials-section">
+        <div class="container reveal">
+            <div class="text-center">
+                <span class="section-title">Travelers' Tales</span>
+                <h2 class="section-heading" style="margin-bottom: 3rem;">Stories Worth Sharing</h2>
+            </div>
+            
+            <div class="testimonial-card glass">
+                <i data-lucide="quote" class="quote-icon"></i>
+                
+                <div id="testimonial-container">
+                    <div class="testimonial-slide active">
+                        <p class="testimonial-text">"The trip to Kerala was absolutely magical. The houseboat experience was perfect, balancing relaxation with adventure. I couldn't have asked for a better honeymoon!"</p>
+                        <div class="user-profile">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Sarah Jenkins</h4>
+                                <p>New York, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"Wanderlust made our family trip to Ladakh effortless. The guides were knowledgeable and treated our kids like royalty. Highly recommended!"</p>
+                        <div class="user-profile">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Michael Chen</h4>
+                                <p>Toronto, Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <p class="testimonial-text">"I've traveled solo for years, but this group tour was special. I made lifelong friends and saw parts of Rajasthan I never would have found on my own."</p>
+                        <div class="user-profile">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Elena Rodriguez</h4>
+                                <p>Madrid, Spain</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <div onclick="setSlide(0)" class="slide-dot active"></div>
+                    <div onclick="setSlide(1)" class="slide-dot"></div>
+                    <div onclick="setSlide(2)" class="slide-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="contact" class="destinations-section">
+        <div class="container">
+            <div class="newsletter-box glass">
+                <div class="newsletter-bg"></div>
+                <div class="newsletter-overlay"></div>
+                
+                <div class="reveal">
+                    <h2 class="section-heading">Join The Inner Circle</h2>
+                    <p style="max-width: 35rem; margin: 0 auto; color: #cbd5e1;">Get exclusive access to secret destinations, insider tips, and special offers that never reach social media. Plus, 20% off your first adventure.</p>
+                    
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Welcome to the journey!');">
+                        <input type="email" placeholder="Enter your email to unlock secrets" required>
+                        <button type="submit">Unlock Access</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <i data-lucide="compass"></i>
+                        <span>Wanderlust</span>
+                    </div>
+                    <p>Your trusted companion for exploring the beautiful landscapes of India.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i data-lucide="instagram"></i></a>
+                        <a href="#"><i data-lucide="facebook"></i></a>
+                        <a href="#"><i data-lucide="twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                &copy; 2024 Wanderlust Tourism. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
